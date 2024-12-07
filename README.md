@@ -26,3 +26,8 @@ Refer to the repository structure to understand the code organization.
 - Nginx: Web server.
 - Git: To fetch application code.
 - Python: For backend application logic.
+
+## Key Acheivements
+- Reduced manual provisioning effort by 90% through automation with Ansible playbooks.
+- Enhanced consistency and scalability by creating modular and reusable roles, improving maintainability of configurations.
+- Successfully deployed a fully operational web application, ensuring high availability and seamless integration across environments.
