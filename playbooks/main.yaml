@@ -1,0 +1,10 @@
+---
+- name: Configuration and Deploy Application
+  hosts: all
+  become: yes
+
+
+  roles:
+    - common
+    - webserver
+    - application

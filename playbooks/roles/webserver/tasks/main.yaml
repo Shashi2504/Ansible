@@ -1,0 +1,35 @@
+---
+
+- name: Install Nginx
+  package:
+    name: nginx
+    state: present
+
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Configure Nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+  notify: Restart Nginx
+
+- name: Link Nginx configuration
+  file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/defaut
+    state: link
+  notify: Restart Nginx
+
+- name: Test the Nginx Configuration
+  command: nginx -t
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

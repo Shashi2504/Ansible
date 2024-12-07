@@ -1,0 +1,22 @@
+---
+
+- name: Install Python and dependencies
+  package:
+    name: python3-pip
+    state: present
+
+- name: Clone the repository
+  git:
+    repo: https://github.com/example/app-repo.git
+    dest: /var/www/app
+    version: main
+
+- name: Install application dependencies
+  pip:
+    requirements: /var/www/app/requirements.txt
+    virtualenv: /var/www/app/venv
+
+- name: Start application
+  command: python3 /var/www/app/app.py
+  async: 30
+  poll: 0

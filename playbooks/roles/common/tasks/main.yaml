@@ -1,0 +1,21 @@
+---
+
+- name: Update and upgrade the packages
+  apt:
+    updated_cache: yes
+    upgrade: dist
+  when: ansible_os_family == "Debian"
+
+- name: Update and install on EPEL on CentOS
+  yum:
+    name: epel-release
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Install common packages
+  package:
+    name:
+      - git
+      - curl
+      - vim
+    state: present
